@@ -16,15 +16,20 @@ interface IEquip {
 }
 
 // Função assíncrona para buscar os usuários da API
-async function fetchEquip(): Promise<any> {
+async function fetchEquip(): Promise<any> { // Tratar o retorno, não retornar ANY
   const result = await api.get("/equipamentos");
   return result.data;
 }
 
 export default function Home() {
   // Estados para armazenar os usuários, o estado de carregamento e os usuários filtrados
-  const [equip, setEquip] = useState<IEquip[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  /*
+    Validar a lógica de utilizar esses dois states para a armazenamento geral e filtrado,
+    cada vez que é atualizado o valor dos dois - um depois do outro -, o componente
+    é recarregado 2 vezes (não tem problema recarregar 2 vezes, mas uma é melhor que 2)
+  */
+  const [equip, setEquip] = useState<IEquip[]>([]);
   const [filteredEquip, setFilteredEquip] = useState<IEquip[]>([]);
   // Estado para armazenar o termo de busca do filtro por nome
   const [searchTerm, setSearchTerm] = useState<string>("");

@@ -143,7 +143,7 @@ export default function NewEquip() {
                     <input
                         type="checkbox"
                         name="Disponivel?"
-                        checked={formDataEquip.status}
+                        checked={formDataEquip.status} // Verificar o comportamento do onChange no caso desse status
                         onChange={handleChange}
                         className="border border-gray-300 w-[50%] rounded-md px-3 py-2 mb-3 text-black"
                     />
